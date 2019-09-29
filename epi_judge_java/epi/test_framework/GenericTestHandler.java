@@ -12,7 +12,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
@@ -64,7 +63,7 @@ public class GenericTestHandler {
     this.func = func;
     this.comparator = comparator;
     hasExecutorHook = false;
-    paramTypes = List.of(func.getGenericParameterTypes());
+    paramTypes = Arrays.asList(func.getGenericParameterTypes());
 
     if (paramTypes.size() >= 1 &&
         paramTypes.get(0).equals(TimedExecutor.class)) {
