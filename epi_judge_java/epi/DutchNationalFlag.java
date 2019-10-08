@@ -4,13 +4,24 @@ import epi.test_framework.GenericTest;
 import epi.test_framework.TestFailure;
 import epi.test_framework.TimedExecutor;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class DutchNationalFlag {
   public enum Color { RED, WHITE, BLUE }
-
   public static void dutchFlagPartition(int pivotIndex, List<Color> A) {
-    // TODO - you fill in here.
-    return;
+    Color pivot = A.get(pivotIndex);
+    int low = 0, mid = 0, high = A.size();
+    // Keep iterating as long as there is an unclassified element.
+    while (mid < high) {
+      // A.get(equal) is the incoming unclassified element.
+      if (A.get(mid).ordinal() < pivot.ordinal()) {
+        Collections.swap(A, low++, mid++);
+      } else if (A.get(mid).ordinal() == pivot.ordinal()) {
+        ++mid;
+      } else { // A.get(equal) > pivot.
+        Collections.swap(A, mid, --high);
+      }
+    }
   }
   @EpiTest(testDataFile = "dutch_national_flag.tsv")
   public static void dutchFlagPartitionWrapper(TimedExecutor executor,
