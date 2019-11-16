@@ -20,6 +20,14 @@ public class BuyAndSellStock {
       sell_index++;
     }
     return maxProfit;
+
+//    double maxProfit = Double.MIN_VALUE;
+//    double minPrice = Double.MAX_VALUE;
+//    for (Double price: prices) {
+//      minPrice = Math.min(minPrice, price);
+//      maxProfit = Math.max(maxProfit, price-minPrice);
+//    }
+//    return maxProfit;
   }
 
   public static void main(String[] args) {
